@@ -1,5 +1,10 @@
 import datetime
 import time
+import sys
+
+
+from get_files import get_file_names
+
 
 def read_file(filename):
     with open(filename, mode='rb') as f:
@@ -10,12 +15,14 @@ def read_file(filename):
             if not data:
                 print(filename, "done ###############")
                 break
+
+
 def main():
     begin = datetime.datetime.now()
-    files = ['/home/sia/tmp/{}'.format(i) for i in range(1, 11)]
+    files = get_file_names(sys.argv)
     for f in files:
         read_file(f)
-
     print(datetime.datetime.now() - begin)
+
 
 main()
