@@ -1,9 +1,11 @@
+import argparse
 import os
 
 
-def get_file_names(argv):
-    if len(argv) == 1:
-        raise ValueError("Путь не передан")
-    if not os.path.isdir(argv[1]):
+def get_file_names():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('directory')
+    args = parser.parse_args()
+    if not os.path.isdir(args.directory):
         raise ValueError("Путь не является директорией")
-    return [os.path.join(argv[1], name) for name in os.listdir(argv[1])]
+    return [os.path.join(args.directory, name) for name in os.listdir(args.directory)]

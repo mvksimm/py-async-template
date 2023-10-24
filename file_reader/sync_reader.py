@@ -1,7 +1,5 @@
 import datetime
 import time
-import sys
-
 
 from get_files import get_file_names
 
@@ -19,7 +17,7 @@ def read_file(filename):
 
 def main():
     begin = datetime.datetime.now()
-    files = get_file_names(sys.argv)
+    files = get_file_names()
     for f in files:
         read_file(f)
     print(datetime.datetime.now() - begin)
